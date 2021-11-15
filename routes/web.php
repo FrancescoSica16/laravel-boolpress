@@ -27,7 +27,15 @@ Route::middleware('auth') //devi essere autenticato
 
     // tutte le rotte che iniziano con prefisso " "
     Route::get('/', 'HomeController@index')->name('home');
+
     Route::resource('posts', 'PostController');
+
+    // Route::get('/travels', 'HomeController@index')->name('travels.index');
+
+    // Route::get('/travels/{travel}', 'HomeController@show')->name('travels.show');
+
+    // Route::resource('posts', 'PostController');
+
     // Route::get('singlePost', 'HomeController@show')->name('singlePost');
 
 });
