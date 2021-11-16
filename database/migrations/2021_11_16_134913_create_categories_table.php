@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateCategoriesTable extends Migration
 {
     /**
@@ -15,8 +16,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->name();
-            $table->
+            $table->string('name', 30)->unique();
+            $table->string('slug', 40)->unique();
             $table->timestamps();
         });
     }
