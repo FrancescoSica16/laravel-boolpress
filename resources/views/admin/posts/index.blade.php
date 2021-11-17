@@ -32,7 +32,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button class="btn btn-alert" type="submit">Elimina il post</a>
+                                <button class="btn btn-danger " type="submit">Elimina</a>
                             </form>
                         </td>
                     </tr>

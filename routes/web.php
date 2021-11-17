@@ -34,10 +34,5 @@ Route::middleware('auth') //devi essere autenticato
 
     // Route::get('/travels/{travel}', 'HomeController@show')->name('travels.show');
 
-    // Route::resource('posts', 'PostController');
-
-    // Route::get('singlePost', 'HomeController@show')->name('singlePost');
-
 });
 
-// Route::get('/home', 'HomeController@index')->name('home');
