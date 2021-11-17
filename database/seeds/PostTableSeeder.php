@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\Category;
-use Illuminate\Database\Seeder;
+use App\Models\Post;
+use App\User;
+
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use App\Models\Post;
 
+use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
 
@@ -19,16 +21,22 @@ class PostTableSeeder extends Seeder
     public function run(Faker $faker)
     {    
 
-        $categories_id = Category::pluck('id')->toArray();
+        $category_ids = Category::pluck('id')->toArray();
+
+        $user_ids = User::pluck('id')->toArray();
 
         for ($i=0; $i < 10 ; $i++) { 
             $newPost = new Post();
             $newPost->title = $faker->word(5, true);
-            $newPost->author = $faker->name();
+
+            $newPost->author = Arr::random($user_ids); 
+
             $newPost->post_date = $faker->dateTime();
             $newPost->post_content = $faker->paragraph(6, true);
 
-            $newPost->category_id = Arr::random($categories_id);
+            $newPost->category_id = Arr::random($category_ids);
+
+            
             // $newPost->slug = Str::slug( $newPost->title, '-');
 
             $newPost->save();
