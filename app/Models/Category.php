@@ -8,5 +8,6 @@ class Category extends Model
 {
     public function posts(){
         return $this->hasMany(Post::class);
+        // hasmany accetta anche il nome della chiave esterna
     }
 }

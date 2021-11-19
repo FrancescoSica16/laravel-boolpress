@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
 use Illuminate\Http\Request;
+
+use App\Models\Category;
+use App\Models\Post;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -31,8 +33,11 @@ class PostController extends Controller
      */
     public function create()
     {
+        // Richiedo tutte le categorie presenti e le richiamo inserendole in compact
+        $categories = Category::all();
+
         $post = new Post();
-        return view('admin.posts.create', compact('post'));
+        return view('admin.posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -60,6 +65,8 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
+
+        dd($data);
         $data['post_date'] = Carbon::now();
 
         $post = new Post();
