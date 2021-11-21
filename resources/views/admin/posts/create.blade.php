@@ -27,21 +27,40 @@
                 </div>
 
                 {{-- form per aggiungere category --}}
-
                 <div class="form-group">
                     <label for="category_id">Categoria del post</label>
                     <select name="category_id" id="category_id">
-
-                        <option value="">Senza categoria</option>
                         
-                        @foreach ($categories as $category )
-
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-
-                        @endforeach
-                                  
+                        <option value="">
+                            Senza categoria
+                        </option>                      
+                        @foreach ($categories as $category )                         
+                            <option @if (old("category_id") == $category->id) selected  @endif value="{{$category->id}}">
+                                {{$category->name}}
+                            </option>
+                        @endforeach        
                     </select>
                 </div>
+                 {{-- Fine form per category da rivedere --}}
+
+
+                {{-- form per TAGS --}}
+
+                <div class="form-check form-check-inline">
+                    <legend class="h5">Tags</legend>
+                    @foreach ($tags as $tag)
+                        <input type="checkbox" class="form-check-input" id="tag-{{$tag->id}}" value="{{$tag->id}}" name="tags[]">
+                        
+                        <label class="form-check-label px-2 " for="tag-{{$tag->id}}">
+                            {{$tag->name}}
+                        </label>
+                    @endforeach
+                    
+
+                </div>
+
+                {{-- end form TAGS --}}
+
                 <div class="form-group">
                     <label for="author">Autore del post</label>
                     <input class="form-control" type="text" placeholder="Inserisci l'autore del post" id="author" name="author" value="{{old("author", $post->author)}}" >

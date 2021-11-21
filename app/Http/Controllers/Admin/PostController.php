@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -36,8 +38,10 @@ class PostController extends Controller
         // Richiedo tutte le categorie presenti e le richiamo inserendole in compact
         $categories = Category::all();
 
+        $tags = Tag::all();
+
         $post = new Post();
-        return view('admin.posts.create', compact('post', 'categories'));
+        return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -64,15 +68,25 @@ class PostController extends Controller
             'post_content.min' => 'Il post deve essere lungo almeno 40 caratteri    '
         ]);
 
+        
         $data = $request->all();
 
-        dd($data);
+     
         $data['post_date'] = Carbon::now();
 
+        // $data['user_id'] = Auth::user()->id;
+
+        
+        // $post = Post::create($data);
         $post = new Post();
         $post->fill($data);
-        $post->slug = Str::slug($post->title, '-');
+
+
+        // $post->slug = Str::slug($post->title, '-');
+
         $post->save();
+        //verifico che esista una chiave tags in data e aggiungo tutti i dati selezionati al post, lo scrivo dopo il salvataggio del post perchè ho bisogno che prima sia creato il post visto che mi serve l'id di post
+        if(array_key_exists('tags', $data)) $post->tags()->attach($data['tags']);
 
         return redirect()->route('admin.posts.show', compact('post'));
     }
@@ -96,7 +110,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.posts.edit", compact('post'));
+        $categories = Category::all();
+        return view("admin.posts.edit", compact('post', 'categories'));
     }
 
     /**
@@ -112,7 +127,7 @@ class PostController extends Controller
         $data['post_date'] = Carbon::now();
 
         $post->fill($data);
-        $post->slug = Str::slug($post->title, '-');
+        // $post->slug = Str::slug($post->title, '-');
         $post->update();
 
         return redirect()->route('admin.posts.show', compact('post'));

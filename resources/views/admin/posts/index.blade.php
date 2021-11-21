@@ -17,13 +17,33 @@
         <table class="table table-bordered">
             <thead>
                 <th class="col">Titolo</th>
+                <th class="col">Categoria</th>
+                <th class="col">Tags</th> 
                 <th class="col">Di</th>
                 <th class="col">Scritto il</th>
             </thead>
-            <tbody>
+            <tbody> 
                 @forelse ($posts as $post)
                     <tr>
                         <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
+
+                        {{-- aggiungere categoria --}}
+                        <td>
+                            @if ($post->category) 
+                                <span class="badge badge-primary">{{$post->category->name}} </span>
+                            @else Nessuna categoria
+                            @endif                       
+                        </td>
+
+                        <td>
+                            {{-- riga Tags --}}
+                            @forelse ($post->tags as $item)
+                                {{$item->name}}
+                            @empty                           
+                            @endforelse
+                        </td>
+
+                        
                         <td>{{ $post->author}}</td>
                         <td>{{ $post->post_date}}</td>
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-secondary">Modifica</a></td>
