@@ -34,7 +34,7 @@
 
                 <div class="form-group">
                     <label for="author">Autore del post</label>
-                    <input class="form-control" type="text" placeholder="Default input" id="author" name="author" value="{{$post->author}}" required>
+                    <input class="form-control" type="text" placeholder="Default input" id="author" name="author" value="{{$post->author->name}}" required>
                 </div>
                 <div class="form-group">
                     <label for="image_url">Immagine</label>

@@ -29,7 +29,7 @@ class PostTableSeeder extends Seeder
             $newPost = new Post();
             $newPost->title = $faker->word(5, true);
 
-            $newPost->author = Arr::random($user_ids); 
+            $newPost->user_id = Arr::random($user_ids); 
 
             $newPost->post_date = $faker->dateTime();
             $newPost->post_content = $faker->paragraph(6, true);

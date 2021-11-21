@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card p-5">
             <h1 class="card-title"> {{$post->title}} </h1>
-            <address class="card-subtitle"> di {{ $post->author }} </address>
+            <address class="card-subtitle"> di {{ $post->author->name }} </address>
             <address>
                 @if ($post->category) 
                     <span class="badge badge-primary">{{$post->category->name}} </span>

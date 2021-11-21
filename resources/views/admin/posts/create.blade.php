@@ -61,15 +61,15 @@
 
                 {{-- end form TAGS --}}
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="author">Autore del post</label>
                     <input class="form-control" type="text" placeholder="Inserisci l'autore del post" id="author" name="author" value="{{old("author", $post->author)}}" >
-                </div>
-                <div class="form-group">
+                </div>  questo non serve piu perche inserisco la logica nel controller--}}
+                {{-- <div class="form-group">
                     <label for="image_url">Immagine</label>
                     <input class="form-control" type="text" placeholder="Inserisci l'url dell'immagine del post" id="image_url" name="image_url" 
                     value="{{old('image_url', $post->image_url)}}">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="post_content">Contenuto del post</label>
                     <textarea  class="form-control" type="textarea" placeholder="Inserisci il contenuto del post" id="post_content" name="post_content" >{{old('post_content', $post->post_content) }} </textarea>

@@ -44,7 +44,7 @@
                         </td>
 
                         
-                        <td>{{ $post->author}}</td>
+                        <td>{{ $post->author->name}}</td>
                         <td>{{ $post->post_date}}</td>
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-secondary">Modifica</a></td>
                         <td>
