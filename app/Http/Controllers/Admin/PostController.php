@@ -130,6 +130,8 @@ class PostController extends Controller
         // $post->slug = Str::slug($post->title, '-');
         $post->update();
 
+        if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
+
         return redirect()->route('admin.posts.show', compact('post'));
     }
 

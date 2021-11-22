@@ -30,6 +30,9 @@ Route::middleware('auth') //devi essere autenticato
 
     Route::resource('posts', 'PostController');
 
+    Route::resource('users', 'UserController');
+
+
     // Route::get('/travels', 'HomeController@index')->name('travels.index');
 
     // Route::get('/travels/{travel}', 'HomeController@show')->name('travels.show');
