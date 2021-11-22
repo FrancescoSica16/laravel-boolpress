@@ -10,45 +10,36 @@
         @endif
 
         <header class="p-3">
-            <h1>Post pubblicati</h1>
-            <a href="{{route("admin.posts.create")}}">Crea nuovo post</a>
+            <h1>Utenti registrati</h1>
+            <a href="{{route("admin.users.create")}}">Crea nuovo utente</a>
         </header>
 
         <table class="table table-bordered">
             <thead>
-                <th class="col">Titolo</th>
-                <th class="col">Categoria</th>
-                <th class="col">Tags</th> 
-                <th class="col">Di</th>
-                <th class="col">Scritto il</th>
+                <th class="col-1">ID</th>
+                <th class="col-3">Nome</th>
+                <th class="col-3">E-mail</th>
+                <th class="col-3">Ruolo</th>
+                <th class="col-1"></th>
+                <th class="col-1"></th>
+
             </thead>
             <tbody> 
-                @forelse ($posts as $post)
+                @forelse ($users as $user)
                     <tr>
-                        <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
-
-                        {{-- aggiungere categoria --}}
+                        <td><a href="{{ route('admin.users.show', $user->id ) }}">{{ $user->id }}</a></td>     
+                                      
+                        <td>{{ $user->name}}</td>
+                        <td>{{ $user->email}}</td>
+                        <td>  {{-- riga Role --}}
+                            @forelse ($user->roles as $role)
+                                {{$role->name}}
+                            @empty    
+                            -                       
+                            @endforelse </td>
+                        <td><a href="{{ route('admin.users.edit', $user ) }}" class="btn btn-secondary">Modifica</a></td>
                         <td>
-                            @if ($post->category) 
-                                <span class="badge badge-primary">{{$post->category->name}} </span>
-                            @else Nessuna categoria
-                            @endif                       
-                        </td>
-
-                        <td>
-                            {{-- riga Tags --}}
-                            @forelse ($post->tags as $item)
-                                {{$item->name}}
-                            @empty                           
-                            @endforelse
-                        </td>
-
-                        
-                        <td>{{ $post->author->name}}</td>
-                        <td>{{ $post->post_date}}</td>
-                        <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-secondary">Modifica</a></td>
-                        <td>
-                            <form action="{{route('admin.posts.destroy', $post->id )}}" method="POST">
+                            <form action="{{route('admin.users.destroy', $user->id )}}" method="POST">
                                 @csrf
                                 @method('DELETE')
 
@@ -58,7 +49,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="3">Non ci sono post da visualizzare</td>
+                        <td colspan="3">Non ci sono utenti da visualizzare</td>
                     </tr>
                 @endforelse
             </tbody>

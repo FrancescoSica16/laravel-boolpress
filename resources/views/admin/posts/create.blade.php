@@ -51,7 +51,7 @@
                     @foreach ($tags as $tag)
                         <input type="checkbox" class="form-check-input" id="tag-{{$tag->id}}" value="{{$tag->id}}" name="tags[]">
                         
-                        <label class="form-check-label px-2 " for="tag-{{$tag->id}}">
+                        <label class="form-check-label px-2" for="tag-{{$tag->id}}">
                             {{$tag->name}}
                         </label>
                     @endforeach

@@ -3,19 +3,14 @@
 @section('content')
     <div class="container">
         <div class="card p-5">
-            <h1 class="card-title"> {{$post->title}} </h1>
-            <address class="card-subtitle"> di {{ $post->author->name }} </address>
-            <address>
-                @if ($post->category) 
-                    <span class="badge badge-primary">{{$post->category->name}} </span>
-                @else Nessuna categoria
-                @endif                       
-            </address>
-            <address class="card-subtitle date"> {{ $post->post_date}} </address>
 
-            <p class="card-body"> {{$post->post_content}} </p>
+            <h1 class="card-title"> {{$user->name}} </h1>
+            <address class="card-subtitle">User ID : {{ $user->id }} </address>
+            <address>{{$user->roles->name}}</address>
+            <p class="card-body"> {{$user->email}} </p>
+
             <div class="card-footer back-to-list">
-                <a href="{{route('admin.posts.index')}}" class="btn btn-toolbar">Torna alla lista dei post</a>
+                <a href="{{route('admin.users.index')}}" class="btn btn-toolbar">Torna alla lista degli utenti</a>
             </div>
             
         </div>

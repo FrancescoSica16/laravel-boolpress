@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
        $this->call([
             'UsersTableSeeder',
+            'RoleSeeder',
+            'RoleUserSeeder',
             'CategoriesTableSeeder',
             'TagsTableSeeder',
             'PostTableSeeder'           
