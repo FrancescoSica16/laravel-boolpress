@@ -4,7 +4,7 @@
 
     <div class="container">
         <header>
-            <h1>Modifica il post {{ $post->title }}</h1>
+            <h1>Modifica il post {{ $user->name }}</h1>
         </header>
 
         <section id="post-form">

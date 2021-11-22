@@ -25,7 +25,7 @@
                             Senza categoria
                         </option>                      
                         @foreach ($categories as $category )                         
-                            <option @if (old("category_id") == $category->id) selected  @endif value="{{$category->id}}">
+                            <option {{ $post->category->id == $category->id ? 'selected' : ''}} value="{{$category->id}}">
                                 {{$category->name}}
                             </option>
                         @endforeach        

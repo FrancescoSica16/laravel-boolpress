@@ -6,7 +6,9 @@
 
             <h1 class="card-title"> {{$user->name}} </h1>
             <address class="card-subtitle">User ID : {{ $user->id }} </address>
-            <address>{{$user->roles->name}}</address>
+            <address> @foreach ($user->roles as $role)
+                {{$role->name}}
+            @endforeach</address>
             <p class="card-body"> {{$user->email}} </p>
 
             <div class="card-footer back-to-list">
