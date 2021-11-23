@@ -39,3 +39,8 @@ Route::middleware('auth') //devi essere autenticato
 
 });
 
+// tutte le rotte che iniziano e finiscono per qualsiasi carattere che non siano state gestite fino ad ora saranno reindirizzate alla home
+Route::get('{any?}', function(){
+    return view('guests.home');
+})->where('any','.*');
+

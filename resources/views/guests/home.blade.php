@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <!-- Styles -->
         <style>
             html, body {
@@ -79,7 +80,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            {{-- <div class="content">
                 <div class="title m-b-md">
                     Laravel
                 </div>
@@ -94,7 +95,15 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
+
+        <div id="root"> 
+                
+        </div>
+
+        // inserire file JS
+        
+
     </body>
 </html>
