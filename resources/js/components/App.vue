@@ -1,19 +1,27 @@
 <template>
     <div class="container">
-        <h1>Titolo</h1>
+        <Header :title="title"/>
+        <main>
+            <PostLlist/>
+        </main>
     </div>
 </template>
 
 <script>
+
+import Header from "./Header.vue";
+import PostList from "./Posts/PostList.vue";
+
     export default {
         name: 'App',
         data() {
             return {
-                variabile: ''
+                title: 'Boolpress'
             }
         },
         components:{
-
+            Header,
+            PostList
         },
     }
 </script>

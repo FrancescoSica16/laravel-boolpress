@@ -65,7 +65,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="d-flex justify-content-end">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -102,8 +102,11 @@
                 
         </div>
 
-        // inserire file JS
-        
+       
+
 
     </body>
+    {{-- per poter inserire il component di VUE --}}
+    <script src="{{asset('js/front.js')}}"></script>
+
 </html>
