@@ -63,6 +63,10 @@
                 @endforelse
             </tbody>
         </table>
+
+        <footer class="footer p-3">
+            {{$posts->links()}}
+        </footer>
         
 
     </div>
