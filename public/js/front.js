@@ -2371,6 +2371,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostList',
@@ -2380,17 +2398,22 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: [],
-      baseUri: 'http://127.0.0.1:8000'
+      baseUri: 'http://127.0.0.1:8000',
+      current_page: null,
+      last_page: null
     };
   },
   methods: {
-    getPostList: function getPostList() {
+    getPostList: function getPostList(page) {
       var _this = this;
 
-      axios.get("".concat(this.baseUri, "/api/posts/")).then(function (res) {
+      axios.get("".concat(this.baseUri, "/api/posts/?page=").concat(page)).then(function (res) {
         //esegue solo quando la chiamata axios ha successo e res sarà la risposta
-        _this.posts = res.data.post;
-        console.log(_this.posts);
+        _this.posts = res.data.post.data;
+        console.log(_this.posts); // const {current_page, last_page} = res.data;
+
+        _this.current_page = res.data.post.current_page;
+        _this.last_page = res.data.post.last_page;
       })["catch"](function (err) {
         //esegue quando la chiamata non ha risultato
         console.error(err);
@@ -2398,8 +2421,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
-    this.getPostList();
+  created: function created() {
+    this.getPostList(1);
   }
 });
 
@@ -2999,11 +3022,44 @@ var render = function () {
       _vm._l(_vm.posts, function (post) {
         return _c("PostCard", { key: post.id, attrs: { post: post } })
       }),
+      _vm._v(" "),
+      _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+        _c("ul", { staticClass: "pagination" }, [
+          _vm.current_page > 1
+            ? _c("li", { staticClass: "page-item" }, [
+                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+                  _vm._v("Previous"),
+                ]),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.current_page < _vm.last_page
+            ? _c("li", { staticClass: "page-item" }, [
+                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+                  _vm._v("Next"),
+                ]),
+              ])
+            : _vm._e(),
+        ]),
+      ]),
     ],
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+        _vm._v("1"),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
