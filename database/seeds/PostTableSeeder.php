@@ -25,7 +25,7 @@ class PostTableSeeder extends Seeder
 
         $user_ids = User::pluck('id')->toArray();
 
-        for ($i=0; $i < 10 ; $i++) { 
+        for ($i=0; $i < 30 ; $i++) { 
             $newPost = new Post();
             $newPost->title = $faker->word(5, true);
 

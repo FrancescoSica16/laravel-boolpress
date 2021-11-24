@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             'RoleUserSeeder',
             'CategoriesTableSeeder',
             'TagsTableSeeder',
-            'PostTableSeeder'           
+            'PostTableSeeder',
+            'PostTagSeeder'           
         ]);
     }
 }
