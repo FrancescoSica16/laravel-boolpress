@@ -2389,6 +2389,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostList',
@@ -2422,7 +2423,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.getPostList(1);
+    this.getPostList(3);
   }
 });
 
@@ -3024,38 +3025,73 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
-        _c("ul", { staticClass: "pagination" }, [
-          _vm.current_page > 1
-            ? _c("li", { staticClass: "page-item" }, [
-                _c("button", { staticClass: "page-link" }, [
-                  _vm._v("Previous"),
-                ]),
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm.current_page < _vm.last_page
-            ? _c("li", { staticClass: "page-item" }, [
-                _c("button", { staticClass: "page-link" }, [_vm._v("Next")]),
-              ])
-            : _vm._e(),
-        ]),
+        _c(
+          "ul",
+          { staticClass: "pagination" },
+          [
+            _vm.current_page > 1
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPostList(_vm.current_page - 1)
+                        },
+                      },
+                    },
+                    [_vm._v("Previous")]
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.last_page, function (n) {
+              return _c(
+                "li",
+                {
+                  key: n,
+                  staticClass: "page-item",
+                  class: { active: n === _vm.current_page },
+                  on: {
+                    click: function ($event) {
+                      return _vm.getPostList(n)
+                    },
+                  },
+                },
+                [
+                  _c("button", { staticClass: "page-link" }, [
+                    _vm._v(_vm._s(n)),
+                  ]),
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm.current_page < _vm.last_page
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPostList(_vm.current_page + 1)
+                        },
+                      },
+                    },
+                    [_vm._v("Next")]
+                  ),
+                ])
+              : _vm._e(),
+          ],
+          2
+        ),
       ]),
     ],
     2
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("button", { staticClass: "page-link" }, [_vm._v("1")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

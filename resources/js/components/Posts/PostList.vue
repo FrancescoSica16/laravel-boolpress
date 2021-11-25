@@ -6,15 +6,16 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li v-if="current_page > 1" class="page-item">
-                    <button class="page-link">Previous</button>
+                     <button class="page-link" @click="getPostList( current_page - 1)">Previous</button>
                 </li>
 
-                <li class="page-item">
-                    <button class="page-link">1</button>
+                <li v-for="n in last_page" :key="n" class="page-item"
+                 @click="getPostList(n)" :class="{active : n === current_page}">
+                    <button class="page-link">{{n}}</button>
                 </li>
                
                 <li v-if="current_page < last_page" class="page-item">
-                    <button class="page-link">Next</button>
+                    <button class="page-link" @click="getPostList( current_page + 1)">Next</button>
                 </li>
             </ul>
         </nav>
@@ -63,7 +64,7 @@ export default {
         }
     },
     created() {
-        this.getPostList(1);
+        this.getPostList(3);
     }
 }
 </script>

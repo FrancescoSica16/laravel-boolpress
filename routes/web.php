@@ -28,7 +28,9 @@ Route::middleware('auth') //devi essere autenticato
     // tutte le rotte che iniziano con prefisso " "
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('posts', 'PostController');
+    Route::resource('posts', 'PostController')->except([
+        'index', 'show'
+    ]);
 
     Route::resource('users', 'UserController');
 
@@ -38,6 +40,10 @@ Route::middleware('auth') //devi essere autenticato
     // Route::get('/travels/{travel}', 'HomeController@show')->name('travels.show');
 
 });
+
+Route::resource('posts', PostController::class)->only([
+        'index', 'show'
+    ]);
 
 // tutte le rotte che iniziano e finiscono per qualsiasi carattere che non siano state gestite fino ad ora saranno reindirizzate alla home
 Route::get('{any?}', function(){

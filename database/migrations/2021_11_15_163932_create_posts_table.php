@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('post_content');
             $table->date('post_date');         
             $table->timestamps();
+            $table->string('image_url')->nullable();
 
             $table->foreign('user_id')
             ->references('id')

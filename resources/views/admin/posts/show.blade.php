@@ -15,7 +15,7 @@
 
             <p class="card-body"> {{$post->post_content}} </p>
             <div class="card-footer back-to-list">
-                <a href="{{route('admin.posts.index')}}" class="btn btn-toolbar">Torna alla lista dei post</a>
+                <a href="{{route('posts.index')}}" class="btn btn-toolbar">Torna alla lista dei post</a>
             </div>
             
         </div>

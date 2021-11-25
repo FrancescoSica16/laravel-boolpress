@@ -11,7 +11,11 @@
 
         <header class="p-3">
             <h1>Post pubblicati</h1>
+
+            @auth
             <a href="{{route("admin.posts.create")}}">Crea nuovo post</a>
+            @endauth
+            
         </header>
 
         <table class="table table-bordered">
@@ -25,7 +29,7 @@
             <tbody> 
                 @forelse ($posts as $post)
                     <tr>
-                        <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
+                        <td><a href="{{ route('posts.show', $post->id ) }}">{{ $post->title }}</a></td>
 
                         {{-- aggiungere categoria --}}
                         <td>
@@ -46,6 +50,9 @@
                         
                         <td>{{ $post->author->name}}</td>
                         <td>{{ $post->post_date}}</td>
+                        @auth
+                            
+                        
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-secondary">Modifica</a></td>
                         <td>
                             <form action="{{route('admin.posts.destroy', $post->id )}}" method="POST">
@@ -55,6 +62,7 @@
                                 <button class="btn btn-danger " type="submit">Elimina</a>
                             </form>
                         </td>
+                        @endauth
                     </tr>
                 @empty
                     <tr>
