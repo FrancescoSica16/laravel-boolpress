@@ -87,7 +87,7 @@ class PostController extends Controller
         //verifico che esista una chiave tags in data e aggiungo tutti i dati selezionati al post, lo scrivo dopo il salvataggio del post perchè ho bisogno che prima sia creato il post visto che mi serve l'id di post
         if(array_key_exists('tags', $data)) $post->tags()->attach($data['tags']);
 
-        return redirect()->route('admin.posts.show', compact('post'));
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**

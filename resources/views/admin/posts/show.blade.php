@@ -12,7 +12,7 @@
                 @endif                       
             </address>
             <address class="card-subtitle date"> {{ $post->post_date}} </address>
-            <img src="{{asset('storage/') . $post->image_url}}" alt="" class="img-fluid">
+            <img src="{{asset('storage/'. $post->image_url) }}" alt="" class="img-fluid">
             <p class="card-body"> {{$post->post_content}} </p>
             <div class="card-footer back-to-list">
                 <a href="{{route('posts.index')}}" class="btn btn-toolbar">Torna alla lista dei post</a>
