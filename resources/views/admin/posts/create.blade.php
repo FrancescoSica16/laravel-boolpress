@@ -17,7 +17,7 @@
                     </ul>
                 </div>        
             @endif
-            <form action="{{route('admin.posts.store')}}" method="POST" >
+            <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group">
                     <label for="title">Titolo del post</label>
@@ -70,6 +70,13 @@
                     <input class="form-control" type="text" placeholder="Inserisci l'url dell'immagine del post" id="image_url" name="image_url" 
                     value="{{old('image_url', $post->image_url)}}">
                 </div> --}}
+
+                <div class="form-group">
+                    <label for="image">Aggiungi immagine al post</label>
+                    <input class="form-control" type="file" placeholder="Inserisci l'immagine del post" id="image" name="image" >{{old('image_url', $post->image_url) }} 
+                   
+                </div>
+
                 <div class="form-group">
                     <label for="post_content">Contenuto del post</label>
                     <textarea  class="form-control" type="textarea" placeholder="Inserisci il contenuto del post" id="post_content" name="post_content" >{{old('post_content', $post->post_content) }} </textarea>

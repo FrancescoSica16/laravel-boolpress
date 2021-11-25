@@ -11,6 +11,7 @@ use App\Models\Tag;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -72,7 +73,8 @@ class PostController extends Controller
         $data['post_date'] = Carbon::now();
 
         $data['user_id'] = Auth::user()->id;
-
+        
+        $data['image_url'] = Storage::put('public', $data['image']);
         
         // $post = Post::create($data);
         $post = new Post();
