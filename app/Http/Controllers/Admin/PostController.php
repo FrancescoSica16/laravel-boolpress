@@ -125,13 +125,17 @@ class PostController extends Controller
         $data = $request->all();
         $data['post_date'] = Carbon::now();
 
+        $data['user_id'] = Auth::user()->id;
+
+        $data['image_url'] = Storage::put('public', $data['image']);
+
         $post->fill($data);
         // $post->slug = Str::slug($post->title, '-');
         $post->update();
 
         if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
 
-        return redirect()->route('admin.posts.show', compact('post'));
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**

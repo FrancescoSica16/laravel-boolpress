@@ -8,7 +8,7 @@
         </header>
 
         <section id="post-form">
-            <form action="{{route('admin.posts.update', $post)}}" method="POST">
+            <form action="{{route('admin.posts.update', $post)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -32,13 +32,13 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="author">Autore del post</label>
                     <input class="form-control" type="text" placeholder="Default input" id="author" name="author" value="{{$post->author->name}}" required>
-                </div>
+                </div> --}}
                 <div class="form-group">
-                    <label for="image_url">Immagine</label>
-                    <input class="form-control" type="text" placeholder="Image url" id="image_url" name="image_url" value="{{$post->image_url}}" required>
+                    <label for="image">Immagine</label>
+                    <input class="form-control" type="file" placeholder="Image url" id="image" name="image" value="{{$post->image_url}}" required>
                 </div>
                 <div class="form-group">
                     <label for="post_content">Contenuto del post</label>
