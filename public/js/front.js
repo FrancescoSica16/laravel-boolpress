@@ -3027,7 +3027,7 @@ var render = function () {
         _c("ul", { staticClass: "pagination" }, [
           _vm.current_page > 1
             ? _c("li", { staticClass: "page-item" }, [
-                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+                _c("button", { staticClass: "page-link" }, [
                   _vm._v("Previous"),
                 ]),
               ])
@@ -3037,9 +3037,7 @@ var render = function () {
           _vm._v(" "),
           _vm.current_page < _vm.last_page
             ? _c("li", { staticClass: "page-item" }, [
-                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-                  _vm._v("Next"),
-                ]),
+                _c("button", { staticClass: "page-link" }, [_vm._v("Next")]),
               ])
             : _vm._e(),
         ]),
@@ -3054,9 +3052,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-        _vm._v("1"),
-      ]),
+      _c("button", { staticClass: "page-link" }, [_vm._v("1")]),
     ])
   },
 ]

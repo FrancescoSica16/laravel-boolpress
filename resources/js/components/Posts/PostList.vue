@@ -6,15 +6,15 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li v-if="current_page > 1" class="page-item">
-                    <a class="page-link" href="#">Previous</a>
+                    <button class="page-link">Previous</button>
                 </li>
 
                 <li class="page-item">
-                    <a class="page-link" href="#">1</a>
+                    <button class="page-link">1</button>
                 </li>
                
                 <li v-if="current_page < last_page" class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <button class="page-link">Next</button>
                 </li>
             </ul>
         </nav>
