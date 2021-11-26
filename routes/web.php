@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guests.home');
-});
+// Route::get('/', function () {
+//     return view('guests.home');
+// });
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/contatti', 'HomeController@contactFormHandler')->name('guest.contact');
+Route::get('/thanks', 'HomeController@contactFormEnder')->name('guest.thanks');
 
 Auth::routes();
 
@@ -26,7 +30,6 @@ Route::middleware('auth') //devi essere autenticato
 ->group(function(){       // e raggruppale in
 
     // tutte le rotte che iniziano con prefisso " "
-    Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('posts', 'PostController')->except([
         'index', 'show'

@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function contactFormHandler()
+    {
+        return view('guest.contact');
+    }
+    public function contactFormEnder()
+    {
+        return view('guest.thanks');
+    }
 }

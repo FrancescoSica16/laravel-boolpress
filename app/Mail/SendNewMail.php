@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace App\Mail;
 
@@ -28,6 +28,7 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        // è la view che dobbiamo usare per impaginare la email
+        return $this->view('');
     }
 }
